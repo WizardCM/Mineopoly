@@ -14,6 +14,10 @@
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public</url>
         </repository>
+        <repository>
+            <id>royal-repo</id>
+            <url>http://minor.royaldev.org:8081/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -29,6 +33,14 @@
 		<scope>system</scope>
 		<systemPath>/var/lib/jenkins/jobs/Mineopoly/workspace/TacoAPI.jar</systemPath>
 	    </dependency>
+        <dependency>
+            <groupId>com.sk89q</groupId>
+            <artifactId>worldedit</artifactId>
+            <version>LATEST</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+		
     </dependencies>
 
   <name>Minopoly</name>
