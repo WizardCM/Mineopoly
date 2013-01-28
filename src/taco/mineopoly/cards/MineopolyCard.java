@@ -2,7 +2,6 @@ package taco.mineopoly.cards;
 
 import taco.mineopoly.Mineopoly;
 import taco.mineopoly.MineopolyPlayer;
-import taco.tacoapi.api.config.TacoConfig;
 
 public abstract class MineopolyCard {
 
