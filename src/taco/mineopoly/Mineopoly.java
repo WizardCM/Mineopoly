@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.bukkit.Server;
 
 import taco.tacoapi.api.TacoPlugin;
-import taco.tacoapi.api.metrics.Metrics;
 import taco.mineopoly.cmds.JailCommandHandler;
 import taco.mineopoly.cmds.MineopolyCommandHandler;
 import taco.mineopoly.cmds.PropertyCommandHandler;
