@@ -20,7 +20,7 @@ public class Railroad extends MineopolySection implements Ownable, CardinalSecti
 
 	
 	public Railroad(String name, int side) {
-		super((side * 10) + 5, Mineopoly.config.getRailroadName(name), '0');
+		super((side * 10) + 5, Mineopoly.config.getRailroadName(name), '8');
 		this.side = side;
 	}
 
@@ -55,12 +55,9 @@ public class Railroad extends MineopolySection implements Ownable, CardinalSecti
 
 	public void getInfo(Player player){
 		TacoChatUtils cu = Mineopoly.getChatUtils();
-		String o = "";
-		if(isOwned()) o =  " &0Owner&7:&b " +  getOwner().getName();
 		player.sendMessage(cu.formatMessage("&6---[" + getColorfulName() +"&6]---"));
-		player.sendMessage(cu.formatMessage("&0Owned&7:&b " + isOwned() + o));
-		player.sendMessage(cu.formatMessage("&0Rent&7:&2 " + getRent()));
-		player.sendMessage(cu.formatMessage("&0Price&7:&2 200"));
+		player.sendMessage(cu.formatMessage(color + "Owned&7: &b" + (isOwned() ? owner.getName() : "none")));
+		player.sendMessage(cu.formatMessage(color + (isOwned() ? "Rent&7: " + getRent() : "Price&7: ")));
 	}
 	
 	public int getRent(){

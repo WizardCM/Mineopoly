@@ -102,6 +102,10 @@ public class MineopolyPlayer extends MineopolyChannelListener{
 		return hasMonopoly(section.getColor()) && section.getHouses() < 4 && !section.hasHotel();
 	}
 	
+	public boolean canAddHotel(Property section){
+		return getMoney() >= (5 - section.getHouses()) * 50;
+	}
+	
 	public void getInfo(Player p){
 		p.sendMessage(Mineopoly.getChatUtils().createHeader("&3Monopoly&7: &b" + getName()));
 		p.sendMessage(Mineopoly.getChatUtils().formatMessage("&3Money&7: &2" + getMoney()));
