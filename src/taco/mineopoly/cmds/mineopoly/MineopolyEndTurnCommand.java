@@ -30,7 +30,7 @@ public class MineopolyEndTurnCommand extends TacoCommand {
 				if(p.hasTurn()){
 					if(p.hasRolled()){
 						if(p.getMoney() < 0){
-							p.sendMessage("&cYou are in debt (negative money) you must gain money before ending your turn. Or you can quit with &3/m quit");
+							p.sendMessage("&cYou are in debt (negative money) you must gain money before ending your turn. Or you can quit with &3/mineopoly quit");
 						}else{
 							p.setTurn(false, false);
 						}

@@ -29,22 +29,16 @@ public class Property extends MineopolySection implements Ownable, CardinalSecti
 		super(id, Mineopoly.config.getPropertyName(name), color.getChar());
 		this.mColor = color;
 		this.side = side;
-		if(rent.length != 6){
-			throw new IllegalArgumentException("variable 'rent' must have an array length of 6");
-		}else{
-			r = rent[0];
-			h = rent[1];
-			h2 = rent[2];
-			h3 = rent[3];
-			h4 = rent[4];
-			hotel = rent[5];
-		}
+		this.price = price;
+		setRent(rent[0], rent[1], rent[2], rent[3], rent[4], rent[5]);
 	}
 	
 	public int getRent(){
 		if(isOwned()){
 			if(!hasHotel){
 				switch(houses){
+					case 0:
+						return r;
 					case 1:
 						return h;
 					case 2:
@@ -83,14 +77,11 @@ public class Property extends MineopolySection implements Ownable, CardinalSecti
 	
 	public void getInfo(Player player){
 		TacoChatUtils cu = Mineopoly.getChatUtils();
-		String o = "";
-		if(isOwned()) o = mColor + " Owner&7:&b " +  getOwner().getName();
 		player.sendMessage(cu.formatMessage("&6---[" + getColorfulName() +"&6]---"));
-		player.sendMessage(cu.formatMessage(mColor + "Owned&7:&b " + isOwned() + o));
-		player.sendMessage(cu.formatMessage(mColor + "Rent&7:&2 " + getRent()));
-		player.sendMessage(cu.formatMessage(mColor + "Price&7:&2 " + getPrice()));
-		player.sendMessage(cu.formatMessage(mColor + "Houses&7:&b " + getHouses()));
-		player.sendMessage(cu.formatMessage(mColor + "Hotel&7:&b " + hasHotel()));
+		player.sendMessage(cu.formatMessage(mColor + "Owner&7:&b " + (isOwned() ? owner.getName() : "none")));
+		player.sendMessage(cu.formatMessage(mColor + (isOwned() ? "Rent&7: &2" + getRent() : "Price&7: &2" + getPrice())));
+		if(getHouses() > 0 && !hasHotel()) player.sendMessage(cu.formatMessage(mColor + "Houses&7:&b " + getHouses()));
+		if(hasHotel) player.sendMessage(cu.formatMessage(mColor + "Hotel&7:&b " + hasHotel()));
 	}
 	
 	public boolean hasHotel(){
@@ -136,7 +127,7 @@ public class Property extends MineopolySection implements Ownable, CardinalSecti
 	}
 	
 	public void addHotel(){
-		
+		this.hasHotel = true;
 	}
 	
 	public void addHouse(){

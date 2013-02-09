@@ -28,13 +28,9 @@ public class Utility extends MineopolySection implements Ownable, CardinalSectio
 	@Override
 	public void getInfo(Player player){
 		TacoChatUtils cu = Mineopoly.getChatUtils();
-		String c = "&" + color;
-		String o = "";
-		if(isOwned()) o = c + " Owner&7:&b " +  getOwner().getName();
-		player.sendMessage(cu.formatMessage("&6---[" + getColorfulName() + "&6]---"));
-		player.sendMessage(cu.formatMessage(c + "Owned&7:&b " + isOwned() + o));
-		player.sendMessage(cu.formatMessage(c + "Rent&7:&2 " + getRent()));
-		player.sendMessage(cu.formatMessage(c + "Price&7:&2 " + getPrice()));
+		player.sendMessage(cu.formatMessage("&6---[" + getColorfulName() +"&6]---"));
+		player.sendMessage(cu.formatMessage(color + "Owned&7: &b" + (isOwned() ? owner.getName() : "none")));
+		player.sendMessage(cu.formatMessage(color + (isOwned() ? "Rent&7: " + getRent() : "Price&7: ")));
 	}
 	
 	public void reset(){

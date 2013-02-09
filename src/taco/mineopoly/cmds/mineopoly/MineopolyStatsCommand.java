@@ -49,7 +49,7 @@ public class MineopolyStatsCommand extends TacoCommand{
 						}
 					}
 				}else{
-					player.sendMessage(new PlayerNotOnlineMessage(args[1]) + "");
+					player.sendMessage(new PlayerNotOnlineMessage(args[0]) + "");
 					return true;
 				}
 			}else{
